@@ -2,9 +2,7 @@ package com.codemanship;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AddItemToOrderTest {
     @Test
@@ -44,6 +42,13 @@ class AddItemToOrderTest {
         Product product = new Product(7, 0);
         order.addItem(product, 1);
         assertEquals(1, order.getQuantityForItem(product));
+    }
+
+    @Test
+    void cannotAddItemsIfUnsufficientStock() {
+        Order order = new Order();
+        Product product = new Product(1, 0);
+        assertThrows(InsufficentStockException.class, () -> order.addItem(product, 2));
     }
 
 

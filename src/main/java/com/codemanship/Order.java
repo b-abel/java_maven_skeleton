@@ -7,6 +7,9 @@ public class Order {
     private final Map<Product, Integer> items = new HashMap<>();
 
     public void addItem(Product product, int quantity) {
+        if (product.getStock() < quantity) {
+            throw new InsufficentStockException();
+        }
         product.holdStock(quantity);
         items.put(product, quantity);
     }
