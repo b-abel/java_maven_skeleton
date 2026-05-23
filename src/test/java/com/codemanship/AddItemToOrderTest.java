@@ -69,4 +69,20 @@ class AddItemToOrderTest {
         assertFalse(order.containsItemForProduct(product));
     }
 
+    @Test
+    void exceptionContainsMessageIfUnsufficientStock() {
+        Order order = new Order();
+        Product product = new Product(1, 0);
+        InsufficientStockException ex = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
+        assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", ex.getMessage());
+    }
+
+    @Test
+    void exceptionMessageContainsStockIfUnsufficientStock() {
+        Order order = new Order();
+        Product product = new Product(7, 0);
+        InsufficientStockException ex = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 8));
+        assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 7 currently available.", ex.getMessage());
+    }
+
 }

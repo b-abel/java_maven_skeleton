@@ -8,7 +8,7 @@ public class Order {
 
     public void addItem(Product product, int quantity) {
         if (product.getStock() < quantity) {
-            throw new InsufficientStockException();
+            throw new InsufficientStockException("Insufficient stock of Ibanez Tube Screamer. Only " + product.getStock() + " currently available.");
         }
         product.holdStock(quantity);
         items.put(product, quantity);
