@@ -48,7 +48,7 @@ class AddItemToOrderTest {
     void cannotAddItemsIfUnsufficientStock() {
         Order order = new Order();
         Product product = new Product(1, 0);
-        assertThrows(InsufficentStockException.class, () -> order.addItem(product, 2));
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
     }
 
 

@@ -8,7 +8,7 @@ public class Order {
 
     public void addItem(Product product, int quantity) {
         if (product.getStock() < quantity) {
-            throw new InsufficentStockException();
+            throw new InsufficientStockException();
         }
         product.holdStock(quantity);
         items.put(product, quantity);
