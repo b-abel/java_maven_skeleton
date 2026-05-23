@@ -2,7 +2,11 @@ package com.codemanship;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class AddItemToOrderTest {
     @Test
@@ -51,5 +55,18 @@ class AddItemToOrderTest {
         assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
     }
 
+    // Regression test, explicitly required in customer scenario
+    @Test
+    void orderContainsNoItemsIfUnsufficientStock() {
+        Order order = new Order();
+        Product product = new Product(1, 0);
+        try {
+            order.addItem(product, 2);
+            fail("Exception expected");
+        } catch (RuntimeException e) {
+            // expected
+        }
+        assertFalse(order.containsItemForProduct(product));
+    }
 
 }
