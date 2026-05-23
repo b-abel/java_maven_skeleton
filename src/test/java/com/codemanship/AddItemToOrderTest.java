@@ -2,7 +2,9 @@ package com.codemanship;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AddItemToOrderTest {
     @Test
@@ -34,6 +36,14 @@ class AddItemToOrderTest {
         Order order = new Order();
         Product product = new Product(7, 0);
         assertFalse(order.containsItemForProduct(product));
+    }
+
+    @Test
+    void orderContainsQuantityOfOneForProduct() {
+        Order order = new Order();
+        Product product = new Product(7, 0);
+        order.addItem(product, 1);
+        assertEquals(1, order.getQuantityForItem(product));
     }
 
 

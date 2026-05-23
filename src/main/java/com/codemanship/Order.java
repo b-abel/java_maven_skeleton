@@ -1,17 +1,22 @@
 package com.codemanship;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Order {
-    private final List<Product> items = new ArrayList<>();
+    private final Map<Product, Integer> items = new HashMap<>();
 
     public void addItem(Product product, int quantity) {
         product.holdStock(quantity);
-        items.add(product);
+        items.put(product, quantity);
     }
 
     public boolean containsItemForProduct(Product product) {
-        return items.contains(product);
+        return items.containsKey(product);
     }
+
+    public int getQuantityForItem(Product product) {
+        return items.get(product);
+    }
+
 }
