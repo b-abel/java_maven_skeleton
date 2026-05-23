@@ -2,6 +2,7 @@ package com.codemanship;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AddItemToOrderTest {
     @Test
@@ -19,4 +20,14 @@ public class AddItemToOrderTest {
         order.addItem(product, 2);
         assertEquals(2, product.getHold());
     }
+
+    @Test
+    void orderContainsItemForSelectedProduct(){
+        Order order = new Order();
+        Product product = new Product(7, 0);
+        order.addItem(product, 1);
+        assertTrue(order.containItemForProduct(product) );
+    }
+
+
 }
