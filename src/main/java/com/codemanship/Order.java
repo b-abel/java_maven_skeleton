@@ -5,7 +5,7 @@ public class Order {
         product.holdStock(quantity);
     }
 
-    public boolean containItemForProduct(Product product) {
+    public boolean containsItemForProduct(Product product) {
         return true;
     }
 }

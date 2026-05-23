@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AddItemToOrderTest {
+class AddItemToOrderTest {
     @Test
     void addingItemWIthSufficientStockPutsSaleQuantityOnHold(){
         Product product = new Product(7, 0);
@@ -26,7 +26,7 @@ public class AddItemToOrderTest {
         Order order = new Order();
         Product product = new Product(7, 0);
         order.addItem(product, 1);
-        assertTrue(order.containItemForProduct(product) );
+        assertTrue(order.containsItemForProduct(product) );
     }
 
 
