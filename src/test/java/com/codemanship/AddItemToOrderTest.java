@@ -1,8 +1,8 @@
 package com.codemanship;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AddItemToOrderTest {
     @Test
@@ -27,6 +27,13 @@ class AddItemToOrderTest {
         Product product = new Product(7, 0);
         order.addItem(product, 1);
         assertTrue(order.containsItemForProduct(product) );
+    }
+
+    @Test
+    void orderDoesNotContainItemForUnselectedProduct() {
+        Order order = new Order();
+        Product product = new Product(7, 0);
+        assertFalse(order.containsItemForProduct(product));
     }
 
 
